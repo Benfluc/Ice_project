@@ -1,0 +1,67 @@
+Coloque aqui os arquivos de IMAGEM do jogo, com estes nomes (ou troque
+os nomes em settings.py para usar os seus arquivos reais):
+
+moeda.png         -> sprite da moeda coletável (recomendado: 28x28 px, fundo transparente)
+plataforma.png    -> textura do bloco/chão/plataforma comum (será repetida/esticada no tamanho do bloco)
+plataforma_movel.png      -> textura da plataforma que se move (horizontal ou vertical)
+plataforma_caindo.png     -> textura da plataforma que cai pouco depois do herói pisar
+plataforma_quebradica.png -> textura da plataforma que quebra após algumas pisadas
+espinho.png       -> obstáculo de espinhos (recomendado: 40x24 px, fundo transparente)
+projetil.png      -> projétil disparado pelo monstro atirador (recomendado: 20x12 px, fundo transparente)
+background.png    -> imagem de fundo PADRÃO (usada só se uma fase não tiver background próprio definido)
+bandeira.png      -> bandeira/objetivo final da fase (recomendado: 40x80 px, fundo transparente)
+logo.png          -> logo exibido no menu principal (recomendado: 300x120 px)
+menu_background.png -> imagem de fundo do menu principal (recomendado: 960x540 px, mesmo tamanho da janela)
+coracao.png       -> ícone de coração usado no HUD de vida (recomendado: 28x28 px, fundo transparente)
+
+------------------------------------------------------------
+ANIMAÇÕES (herói e monstro) - sequência de frames numerados
+------------------------------------------------------------
+O herói e o monstro agora usam SEQUÊNCIAS de imagens (uma pose por
+arquivo), em vez de uma imagem única. Basta numerar os arquivos a
+partir de 1, sem pular números, com o prefixo certo:
+
+HERÓI (recomendado: 48x64 px, fundo transparente):
+  heroi_idle_1.png, heroi_idle_2.png, ...   -> parado
+  heroi_walk_1.png, heroi_walk_2.png, ...   -> andando
+  heroi_jump_1.png, heroi_jump_2.png, ...   -> pulando
+
+MONSTRO DE PATRULHA (recomendado: 48x48 px, fundo transparente):
+  monstro_idle_1.png, monstro_idle_2.png, ... -> parado
+  monstro_walk_1.png, monstro_walk_2.png, ... -> andando
+
+MONSTRO VOADOR (recomendado: 48x48 px, fundo transparente):
+  monstro_voador_voar_1.png, monstro_voador_voar_2.png, ... -> voando
+
+MONSTRO ATIRADOR (recomendado: 48x48 px, fundo transparente):
+  monstro_atirador_idle_1.png, monstro_atirador_idle_2.png, ... -> parado/disparando
+
+O jogo detecta AUTOMATICAMENTE quantos frames existem em cada
+sequência (pode ser 2, 3, 6, 10 frames, o que você tiver - não
+precisa editar nenhum código, só colocar os arquivos numerados
+direto nessa pasta).
+
+Os sprites são desenhados olhando para a direita por padrão; quando
+o personagem anda/patrulha para a esquerda, o próprio jogo espelha
+a imagem automaticamente (não precisa desenhar uma versão "virada
+para a esquerda" separada).
+
+Se algum desses arquivos numerados não existir ainda, o jogo usa um
+placeholder colorido parado no lugar (sem travar ou dar erro) -
+então pode ir testando e completando as animações pouco a pouco.
+
+------------------------------------------------------------
+BACKGROUNDS POR FASE
+------------------------------------------------------------
+Cada fase pode ter seu próprio fundo (recomendado: 960x540 px). O
+nome do arquivo é definido em level.py, no parâmetro
+imagem_background= de cada construir_fase_N(). Os nomes padrão já
+configurados são:
+
+  background_fase1.png  -> fundo da Fase 1
+  background_fase2.png  -> fundo da Fase 2
+
+Se você adicionar uma Fase 3, defina o nome que quiser (ex:
+"background_fase3.png") e coloque o arquivo aqui com esse nome. Se
+uma fase não tiver background_fase*.png correspondente, o jogo usa
+o background.png padrão no lugar.
